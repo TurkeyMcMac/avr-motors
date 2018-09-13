@@ -1,4 +1,4 @@
-#include "pins.h"
+#include "drive.h"
 #include <util/delay.h>
 
 __attribute__((constructor))
@@ -6,23 +6,20 @@ void main(void)
 {
 	setup();
 
-	OCR0A = 100;
-	OCR0B = 50;
+	A_set_speed(100);
+	B_set_speed(50);
 
 	while (1) {
-		PORTB |= AIN1;
-		PORTB &= ~AIN2;
-		PORTB |= BIN1;
-		PORTB &= ~BIN2;
+		A_go_forward();
+		B_go_forward();
 		_delay_ms(3000);
 
-		PORTB &= ~AIN1;
-		PORTB |= AIN2;
-		PORTB &= ~BIN1;
-		PORTB |= BIN2;
+		A_go_backward();
+		B_go_backward();
 		_delay_ms(3000);
 
-		PORTB &= ~(AIN1 | AIN2 | BIN1 | BIN2);
+		A_brake();
+		B_brake();
 		_delay_ms(3000);
 	}
 }
