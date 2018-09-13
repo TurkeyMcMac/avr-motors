@@ -1,5 +1,5 @@
 binary = motors
-source = *.c
+source = src/*.c
 optimize = s
 partno-define = __AVR_ATmega328P__
 f-cpu = 16000000UL
@@ -9,7 +9,7 @@ port = /dev/ttyUSB0
 
 CC = avr-gcc
 
-$(binary): $(source) *.h
+$(binary): $(source) src/*.h
 	$(CC) $(CFLAGS) -D$(partno-define) -DF_CPU=$(f-cpu) -O$(optimize) -o \
 		$(binary) $(source)
 
