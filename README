@@ -2,3 +2,6 @@ This is a program for controlling motors on the AVR Mega328P. I'm using some
 kind of motor controller, so each motor is controlled by two pins. When one is
 on and the other off, the motor spins one way. When this is inverted, the motor
 spins in the oppisite direction. When both are off, the motor does not move.
+Run this command (or an equivalent) to install dependencies:
+
+sudo apt install gcc-avr binutils-avr avr-libc avrdude
