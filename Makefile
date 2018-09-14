@@ -1,17 +1,23 @@
 binary = motors
-source = src/*.c
 optimize = s
+flags = $(CFLAGS) -D$(partno-define) -DF_CPU=$(f-cpu) -O$(optimize)
 partno-define = __AVR_ATmega328P__
 f-cpu = 16000000UL
 partno = m328p
 programmer-id = arduino
 port = /dev/ttyUSB0
+objects = $(patsubst src/%.c, .building/%.o, $(wildcard src/*.c))
+deps = $(patsubst src/%.c, .building/%.d, $(wildcard src/*.c))
 
 CC = avr-gcc
 
-$(binary): $(source) src/*.h
-	$(CC) $(CFLAGS) -D$(partno-define) -DF_CPU=$(f-cpu) -O$(optimize) -o \
-		$(binary) $(source)
+$(binary): $(objects)
+	$(CC) $(flags) -o $(binary) $(objects)
+
+.building/%.o: src/%.c
+	$(CC) $(flags) -MMD -c $< -o $@
+
+-include $(deps)
 
 .PHONY: upload
 upload: $(binary)
@@ -24,4 +30,4 @@ view_asm: $(binary)
 
 .PHONY: clean
 clean:
-	$(RM) $(binary)
+	$(RM) $(binary) $(objects) $(deps)
