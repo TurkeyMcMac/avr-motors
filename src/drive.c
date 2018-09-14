@@ -25,10 +25,10 @@ void B_go_backward(void)
 void A_brake(void)
 {
 	PORTB &= ~AIN1;
-	PORTB &= ~AIN1;
+	PORTB &= ~AIN2;
 }
 void B_brake(void)
 {
 	PORTB &= ~BIN1;
-	PORTB &= ~BIN1;
+	PORTB &= ~BIN2;
 }
