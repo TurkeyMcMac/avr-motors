@@ -2,9 +2,9 @@
 #include "pins.h"
 #include <stdint.h>
 
-static uint8_t running_flags = 0;
 #	define RUNNING		0b00000001
 #	define LAST_PRESSED	0b00000010
+static uint8_t running_flags = RUNNING;
 
 bool should_run(void)
 {
