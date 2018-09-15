@@ -1,8 +1,9 @@
 binary = motors
 optimize = s
-flags = $(CFLAGS) -D$(partno-define) -DF_CPU=$(f-cpu) -O$(optimize)
+flags = $(CFLAGS) -mmcu=$(mcu) -D$(partno-define) -DF_CPU=$(f-cpu) -O$(optimize)
 partno-define = __AVR_ATmega328P__
 f-cpu = 16000000UL
+mcu = atmega328p
 partno = m328p
 programmer-id = arduino
 port = /dev/ttyUSB0
