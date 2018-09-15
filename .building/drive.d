@@ -1,1 +1,1 @@
-.building/drive.o: src/drive.c src/pins.h
+.building/drive.o: src/drive.c src/drive.h

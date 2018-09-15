@@ -2,7 +2,6 @@
 #define MOTORS_PINS_H_
 
 #include <avr/io.h>
-#include <avr/interrupt.h>
 
 #define AIN1 _BV(5)
 #define AIN2 _BV(4)

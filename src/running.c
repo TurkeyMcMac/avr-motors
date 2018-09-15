@@ -1,5 +1,4 @@
 #include "running.h"
-#include "pins.h"
 #include <stdint.h>
 
 #	define RUNNING		0b00000001
@@ -18,4 +17,10 @@ bool should_run(void)
 	}
 
 	return (running_flags & RUNNING) == 0;
+}
+
+__attribute__((constructor))
+static void set_run_toggle(void)
+{
+	DDRD &= ~RUN;
 }
