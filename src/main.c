@@ -6,8 +6,6 @@ void main(void)
 {
 	uint8_t speed = 0;
 
-	setup();
-
 	while (1) {
 		if (should_run()) {
 			A_set_speed(speed);
