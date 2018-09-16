@@ -1,5 +1,6 @@
 #include "drive.h"
 #include "running.h"
+#include <avr/pgmspace.h>
 #include <util/delay.h>
 
 enum movement {
@@ -11,7 +12,7 @@ enum movement {
 #define STATE(movement, duration) (((movement) << 6) | ((duration) & 0b111111))
 #define STATE_MOVEMENT(state) ((state) >> 6)
 #define STATE_DURATION(state) ((state) & 0b111111)
-static uint8_t states[] = {
+static PROGMEM const uint8_t states[] = {
 	STATE(FORWARD, 21),
 	STATE(TURN_LEFT, 16),
 	STATE(FORWARD, 21),
@@ -29,7 +30,7 @@ static void next_state(void)
 	uint8_t duration = STATE_DURATION(current_state);
 
 	if (duration == 0) {
-		current_state = states[current_idx];
+		current_state = pgm_read_byte(states + current_idx);
 		switch (STATE_MOVEMENT(current_state)) {
 		case FORWARD:
 			L_go_forward();
