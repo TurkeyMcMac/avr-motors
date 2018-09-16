@@ -4,7 +4,7 @@
 #include <avr/io.h>
 #include <stdbool.h>
 
-#define RUN _BV(PD3)
+#define RUN PD3
 #define PIN_RUN PIND
 
 bool should_run(void);

@@ -2,43 +2,43 @@
 
 void A_go_forward(void)
 {
-	PORTB |= AIN1;
-	PORTB &= ~AIN2;
+	PORTB |= _BV(AIN1);
+	PORTB &= ~_BV(AIN2);
 }
 void B_go_forward(void)
 {
-	PORTB |= BIN1;
-	PORTB &= ~BIN2;
+	PORTB |= _BV(BIN1);
+	PORTB &= ~_BV(BIN2);
 }
 
 void A_go_backward(void)
 {
-	PORTB &= ~AIN1;
-	PORTB |= AIN2;
+	PORTB &= ~_BV(AIN1);
+	PORTB |= _BV(AIN2);
 }
 void B_go_backward(void)
 {
-	PORTB &= ~BIN1;
-	PORTB |= BIN2;
+	PORTB &= ~_BV(BIN1);
+	PORTB |= _BV(BIN2);
 }
 
 void A_brake(void)
 {
-	PORTB &= ~AIN1;
-	PORTB &= ~AIN2;
+	PORTB &= ~_BV(AIN1);
+	PORTB &= ~_BV(AIN2);
 }
 void B_brake(void)
 {
-	PORTB &= ~BIN1;
-	PORTB &= ~BIN2;
+	PORTB &= ~_BV(BIN1);
+	PORTB &= ~_BV(BIN2);
 }
 
 __attribute__((constructor))
 static void set_motors(void)
 {
 	// Set outputs
-	DDRD |= PWMA | PWMB;
-	DDRB |= AIN1 | AIN2 | BIN1 | BIN2;
+	DDRD |= _BV(PWMA) | _BV(PWMB);
+	DDRB |= _BV(AIN1) | _BV(AIN2) | _BV(BIN1) | _BV(BIN2);
 
 	// Set PWM timer
 	TCCR0A |= _BV(COM0A1) | _BV(COM0B1) | _BV(WGM01) | _BV(WGM00);

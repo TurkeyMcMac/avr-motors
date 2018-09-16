@@ -7,7 +7,7 @@ static uint8_t running_flags = RUNNING;
 
 bool should_run(void)
 {
-	if (!(PIN_RUN & RUN)) {
+	if (!(PIN_RUN & _BV(RUN))) {
 		if ((running_flags & LAST_PRESSED) == 0) {
 			running_flags |= LAST_PRESSED;
 			running_flags ^= RUNNING;
@@ -22,5 +22,5 @@ bool should_run(void)
 __attribute__((constructor))
 static void set_run_toggle(void)
 {
-	DDRD &= ~RUN;
+	DDRD &= ~_BV(RUN);
 }
