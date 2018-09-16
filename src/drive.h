@@ -9,8 +9,6 @@
 #define BIN2 PB1
 #define PWMB PD5
 #define PWMA PD6
-#define RUN PD3
-#define PIN_RUN PIND
 
 static inline void A_set_speed(uint8_t val)
 {
