@@ -40,12 +40,12 @@ static void next_state(void)
 			B_go_forward();
 			break;
 		case TURN_LEFT:
-			A_go_forward();
-			B_go_backward();
-			break;
-		case TURN_RIGHT:
 			A_go_backward();
 			B_go_forward();
+			break;
+		case TURN_RIGHT:
+			A_go_forward();
+			B_go_backward();
 			break;
 		default:
 			break;
