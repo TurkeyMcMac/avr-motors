@@ -29,8 +29,6 @@ static void next_state(void)
 	uint8_t duration = STATE_DURATION(current_state);
 
 	if (duration == 0) {
-		++current_idx;
-		current_idx %= sizeof(states);
 		current_state = states[current_idx];
 		switch (STATE_MOVEMENT(current_state)) {
 		case FORWARD:
@@ -52,6 +50,8 @@ static void next_state(void)
 		default:
 			break;
 		}
+		++current_idx;
+		current_idx %= sizeof(states);
 	} else {
 		--duration;
 		current_state = STATE(STATE_MOVEMENT(current_state), duration);
