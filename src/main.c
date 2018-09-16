@@ -32,20 +32,20 @@ static void next_state(void)
 		current_state = states[current_idx];
 		switch (STATE_MOVEMENT(current_state)) {
 		case FORWARD:
-			A_go_forward();
-			B_go_forward();
+			L_go_forward();
+			R_go_forward();
 			break;
 		case BACKWARD:
-			A_go_forward();
-			B_go_forward();
+			L_go_forward();
+			R_go_forward();
 			break;
 		case TURN_LEFT:
-			A_go_backward();
-			B_go_forward();
+			L_go_backward();
+			R_go_forward();
 			break;
 		case TURN_RIGHT:
-			A_go_forward();
-			B_go_backward();
+			L_go_forward();
+			R_go_backward();
 			break;
 		default:
 			break;
@@ -60,15 +60,15 @@ static void next_state(void)
 
 void main(void)
 {
-	A_set_speed(90);
-	B_set_speed(90);
+	L_set_speed(90);
+	R_set_speed(90);
 
 	while (1) {
 		if (should_run()) {
 			next_state();
 		} else {
-			A_brake();
-			B_brake();
+			L_brake();
+			R_brake();
 		}
 		_delay_ms(100);
 	}

@@ -1,33 +1,33 @@
 #include "drive.h"
 
-void A_go_forward(void)
+void L_go_forward(void)
 {
 	PORTB |= _BV(AIN1);
 	PORTB &= ~_BV(AIN2);
 }
-void B_go_forward(void)
+void R_go_forward(void)
 {
 	PORTB |= _BV(BIN1);
 	PORTB &= ~_BV(BIN2);
 }
 
-void A_go_backward(void)
+void L_go_backward(void)
 {
 	PORTB &= ~_BV(AIN1);
 	PORTB |= _BV(AIN2);
 }
-void B_go_backward(void)
+void R_go_backward(void)
 {
 	PORTB &= ~_BV(BIN1);
 	PORTB |= _BV(BIN2);
 }
 
-void A_brake(void)
+void L_brake(void)
 {
 	PORTB &= ~_BV(AIN1);
 	PORTB &= ~_BV(AIN2);
 }
-void B_brake(void)
+void R_brake(void)
 {
 	PORTB &= ~_BV(BIN1);
 	PORTB &= ~_BV(BIN2);
