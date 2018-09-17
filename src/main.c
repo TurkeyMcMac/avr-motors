@@ -31,31 +31,31 @@ static void next_state(void)
 
 	if (duration == 0) {
 		current_state = pgm_read_byte(states + current_idx);
-		switch (STATE_MOVEMENT(current_state)) {
-		case FORWARD:
-			L_go_forward();
-			R_go_forward();
-			break;
-		case BACKWARD:
-			L_go_forward();
-			R_go_forward();
-			break;
-		case TURN_LEFT:
-			L_go_backward();
-			R_go_forward();
-			break;
-		case TURN_RIGHT:
-			L_go_forward();
-			R_go_backward();
-			break;
-		default:
-			break;
-		}
 		++current_idx;
 		current_idx %= sizeof(states);
 	} else {
 		--duration;
 		current_state = STATE(STATE_MOVEMENT(current_state), duration);
+	}
+	switch (STATE_MOVEMENT(current_state)) {
+	case FORWARD:
+		L_go_forward();
+		R_go_forward();
+		break;
+	case BACKWARD:
+		L_go_forward();
+		R_go_forward();
+		break;
+	case TURN_LEFT:
+		L_go_backward();
+		R_go_forward();
+		break;
+	case TURN_RIGHT:
+		L_go_forward();
+		R_go_backward();
+		break;
+	default:
+		break;
 	}
 }
 
