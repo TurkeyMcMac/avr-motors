@@ -1,0 +1,23 @@
+Part	From	To
+Wire	A 5V	B Right +
+Wire	A GND	B Right -
+Wire	A VIN	B a1
+Wire	A 3	B c20
+Wire	A 5	B j1
+Wire	A 6	B j7
+Wire	A 8	B j5
+Wire	A 9	B j6
+Wire	A 12	B j2
+Wire	A 13	B j3
+Motor Driver	B c1	B g8
+Wire	B Left +	B a2
+Wire	B Left -	B a3
+Red Wire	B a4	Left Motor
+Black Wire	B a5	Left Motor
+Red Wire	B a6	Right Motor
+Black Wire	B a7	Right Motor
+10KΩ Resistor	B Left +	B b20
+Button	B e20	B f23
+Wire	B Left -	B a22
+Wire	B Left -	B Right -
+Wire	B Left +	B Right +
