@@ -9,6 +9,7 @@ Wire	A 8	B j5
 Wire	A 9	B j6
 Wire	A 12	B j2
 Wire	A 13	B j3
+Wire	B Right +	B j4
 Motor Driver	B c1	B g8
 Wire	B Left +	B a2
 Wire	B Left -	B a3
