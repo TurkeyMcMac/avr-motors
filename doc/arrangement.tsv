@@ -18,7 +18,7 @@ Black Wire	B a5	Left Motor
 Red Wire	B a6	Right Motor
 Black Wire	B a7	Right Motor
 10KΩ Resistor	B Left +	B b20
-Button	B e20	B f23
+Button	B d20	B f22
 Wire	B Left -	B a22
 Wire	B Left -	B Right -
 Wire	B Left +	B Right +
